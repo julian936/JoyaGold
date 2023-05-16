@@ -1,0 +1,31 @@
+<div class="container">
+    <button class="btn btn-primary" [routerLink]="['/agregar']" routerLinkActive="router-link-active" >Agregar</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Material</th>
+                <th scope="col">tipo</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of lista">
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.material}}</td> 
+                <td>{{producto.tipo}}</td>
+                <td>{{producto.precio | currency:'COP ':'symbol'}}</td>
+                <td>
+                    
+                    <button class="btn btn-primary" (click)="openDialog(producto.id)">Ver Detalle</button>
+                    <button class="btn btn-warning" [routerLink]="['/editar/',producto.id]" routerLinkActive="router-link-active" >Modificar</button>
+                    <button class="btn btn-danger" (click)="eliminar(producto.id)">Eliminar</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
